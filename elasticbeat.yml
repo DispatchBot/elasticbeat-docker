@@ -3,7 +3,7 @@
 ############################# Input ############################################
 input:
   # In seconds, defines how often to read server statistics
-  period: 10
+  period: 30
 
   # List of URLs to elasticsearch.
   # Defaults to ["http://127.0.0.1:9200"].
