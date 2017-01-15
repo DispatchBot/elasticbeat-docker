@@ -9,7 +9,7 @@ input:
   # Defaults to ["http://127.0.0.1:9200"].
   # Note: Do not use trailing slash
   urls:
-    - ${ELASTICSEARCH_URL}
+    - ${READ_ELASTICSEARCH_URL}
 
   # Statistics to collect
   stats:
@@ -33,15 +33,15 @@ input:
 output:
 
   ### Elasticsearch as output
-  #elasticsearch:
+  elasticsearch:
     # Array of hosts to connect to.
     # Scheme and port can be left out and will be set to the default (http and 9200)
     # In case you specify and additional path, the scheme is required: http://localhost:9200/path
     # IPv6 addresses should always be defined as: https://[2001:db8::1]:9200
-    #hosts: ["localhost:9200"]
+    hosts: [${WRITE_ELASTICSEARCH_URL}]
 
     # Optional protocol and basic auth credentials.
-    #protocol: "https"
+    protocol: "https"
     #username: "admin"
     #password: "s3cr3t"
 
@@ -60,13 +60,13 @@ output:
     # A template is used to set the mapping in Elasticsearch
     # By default template loading is enabled and the template is loaded.
     # These settings can be adjusted to load your own template or overwrite existing ones
-    #template:
+    template:
 
       # Template name. By default the template name is elasticbeat.
-      #name: "elasticbeat"
+      name: "elasticbeat"
 
       # Path to template file
-      #path: "etc/elasticbeat.template.json"
+      path: "etc/elasticbeat.template.json"
 
       # Overwrite existing template
       #overwrite: false
@@ -133,9 +133,9 @@ output:
 
 
   ### Logstash as output
-  logstash:
+  #logstash:
     # The Logstash hosts
-    hosts: [ ${LOGSTASH_URL} ]
+    #hosts: [ ${LOGSTASH_URL} ]
 
     # Number of workers per Logstash host.
     #worker: 1
